@@ -2,6 +2,7 @@ import unittest
 import pickle as pkl
 from pathlib import Path
 
+import pandas as pd
 import numpy as np
 
 from pyhts import load_tourism, HFModel, Hierarchy, TemporalHierarchy, TemporalHFModel
@@ -20,7 +21,7 @@ class TestWorkflow(unittest.TestCase):
     def test_unconstrained_reconciliation(self):
         train, test, ht, base_fcasters = prepare_data()
 
-        model_ols = HFModel(hierarchy=ht, base_forecasters=base_fcasters,
+        model_ols =HFModel(hierarchy=ht, base_forecasters=base_fcasters,
                             hf_method="comb", comb_method="ols")
         model_ols.fit(train)
         model_wls = HFModel(hierarchy=ht, base_forecasters=base_fcasters,
